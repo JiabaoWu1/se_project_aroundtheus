@@ -4,25 +4,16 @@
 @import url(../blocks/header.css);
 @import url(../blocks/profile.css);
 @import url(../blocks/card.css);
-@media screen and (max-width: 480px) {
-  .profile {
-    flex-direction: column;
-    justify-content: center;
-  }
-  .profile__info {
-    width: 100%;
-  }
-  .profile__description {
-    text-align: center;
-  }
-  .profile__add-button {
-    margin: 0;
-    width: 100%;
-  }
-}
-@media screen and (max-width: 1100px) {
-  .page__section {
-    margin: 0 20px;
-    max-width: calc(100%-40px);
-  }
+
+.footer__description {
+  width: 318px;
+  height: 18px;
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21.78px;
+  text-align: left;
+  color: #545454;
+  padding-top: 67px;
+  padding-bottom: 60px;
 }
