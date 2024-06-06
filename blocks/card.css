@@ -41,7 +41,7 @@
   align-items: center;
   justify-content: space-between;
   color: #000000;
-  border: #000000;
+  border: medium none;
 }
 
 .card__like-button:hover {

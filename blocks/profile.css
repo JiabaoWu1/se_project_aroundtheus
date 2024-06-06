@@ -34,7 +34,7 @@
   border-color: #ffffff;
   align-self: center;
   border-width: 2px;
-  border-radius: 2px 0px 0px 0px;
+  border-radius: 2px;
 }
 
 .profile__add-button:hover {
