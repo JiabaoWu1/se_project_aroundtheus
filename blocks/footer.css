@@ -10,7 +10,7 @@
   padding-bottom: 60px;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 480px) {
   .footer__description {
     padding: 0;
     margin: 48px auto 19px;

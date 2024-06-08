@@ -12,6 +12,8 @@
 }
 
 .profile__edit-button {
+  margin: 0;
+  padding: 0;
   background: transparent url(../images/Edit\ Button.svg) center no-repeat;
   width: 24px;
   height: 24px;
@@ -117,9 +119,19 @@
 
 @media screen and (max-width: 320px) {
   .profile__info {
-    margin: 30px 19px 0;
+    margin: 30px auto 0;
   }
+
   .profile__description {
-    margin-top: 14px;
+    margin: 14px auto 0;
+  }
+
+  .profile__edit-button {
+    width: 18px;
+    height: 18px;
+    border: 1px 0px 0px 0px;
+  }
+  .profile__image {
+    margin: 0;
   }
 }
