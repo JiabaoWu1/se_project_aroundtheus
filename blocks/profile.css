@@ -82,6 +82,8 @@
   .profile {
     flex-direction: column;
     justify-content: center;
+    max-width: 282px;
+    margin: 0 auto;
   }
 
   .profile__info {
