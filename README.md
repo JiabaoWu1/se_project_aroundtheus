@@ -6,7 +6,7 @@ A project about travel lovers sharing and appreciating their adventures within t
 Technologies and techniques used:
 HTML and CSS are the technologies used for this project. Both flexbox and grid were used as a fine combination of the techniques used in this project.
 
-Videos for project 3 presentation:
+Video for project 3 presentation:
 https://drive.google.com/file/d/1ozHoTF3bAWgjc8teT4-tc5I3TdvVR5Zn/view?usp=drive_link
 
 Github page:
