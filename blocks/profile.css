@@ -66,7 +66,6 @@
   grid-area: description;
   text-overflow: ellipsis;
   white-space: nowrap;
-
   overflow: hidden;
 }
 
@@ -95,7 +94,6 @@
 
   .profile__title {
     font-size: 22px;
-    font-weight: 500;
     line-height: 26.63px;
     text-align: center;
     max-width: 282px;
@@ -108,7 +106,6 @@
 
   .profile__description {
     font-size: 14px;
-    font-weight: 400;
     line-height: 16.94px;
     text-align: center;
     margin-top: 14px;
@@ -119,7 +116,6 @@
   .profile__edit-button {
     width: 18px;
     height: 18px;
-    border: 1px 0px 0px 0px;
   }
 
   .profile__add-button {
