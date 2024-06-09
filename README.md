@@ -9,5 +9,4 @@ HTML and CSS are the technologies used for this project. Both flexbox and grid w
 Video for project 3 presentation:
 https://drive.google.com/file/d/1ozHoTF3bAWgjc8teT4-tc5I3TdvVR5Zn/view?usp=drive_link
 
-Github repository link:
-https://github.com/JiabaoWu1/se_project_aroundtheus.git
+Check out the live project here: [Around The U.S. GitHub Pages](https://JiabaoWu1.github.io/se_project_aroundtheus/)
