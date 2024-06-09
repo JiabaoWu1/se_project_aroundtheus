@@ -84,8 +84,7 @@
     flex-direction: column;
     justify-content: center;
     max-width: 282px;
-    margin: 42px auto -50px;
-
+    margin: 42px auto 0;
     padding: 0;
   }
 
