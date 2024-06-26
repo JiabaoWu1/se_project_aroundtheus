@@ -33,9 +33,9 @@
   left: calc(100% + 5px);
   width: 40px;
   height: 40px;
-  background-image: transparent url(../images/Close.svg) no-repeat center;
+  background: transparent url(../images/Close.svg) no-repeat center;
   background-size: contain;
-  transform: rotate(45deg);
+  transform: rotate(90deg);
 }
 
 .modal__close:hover {
@@ -66,7 +66,8 @@
   line-height: 16.94px;
   text-align: left;
   color: #000000;
-  border: 1px solid #000000;
+  border: 0;
+  border-bottom: 1px solid #000000;
 }
 
 .modal__description {
@@ -96,9 +97,15 @@
 }
 
 @media screen and (max-width: 620px) {
+  .modal {
+    top: -140px;
+  }
+
   .modal__close {
     width: 26px;
     height: 26px;
+    top: -50px;
+    left: 250px;
   }
 
   .modal__heading {
