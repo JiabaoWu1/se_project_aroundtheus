@@ -67,7 +67,7 @@
   text-align: left;
   color: #000000;
   border: 0;
-  border-bottom: 1px solid #000000;
+  border-bottom: 1px solid #d3d3d3;
 }
 
 .modal__description {
@@ -110,6 +110,7 @@
 
   .modal__heading {
     margin: 25px 22px 75px;
+    font-size: 18px;
   }
 
   .modal__container {
