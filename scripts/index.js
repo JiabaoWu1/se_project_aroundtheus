@@ -51,7 +51,7 @@ const cardTemplate =
 /*                                  Functions                                 */
 /* -------------------------------------------------------------------------- */
 function closeModal(modal) {
-  profileEditModal.classList.remove("modal_opened");
+  modal.classList.remove("modal_opened");
 }
 
 function getCardElement(cardData) {
@@ -88,7 +88,7 @@ function handleAddCardFormSubmit(e) {
 }
 
 function openModal(modal) {
-  profileEditModal.classList.add("modal_opened");
+  modal.classList.add("modal_opened");
 }
 /* -------------------------------------------------------------------------- */
 /*                               Event Listeners                              */
