@@ -9,11 +9,15 @@
   align-items: center;
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.5);
-  display: none;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0s, 0.5s linear;
 }
 
 .modal_opened {
   display: flex;
+  visibility: visible;
+  opacity: 1;
 }
 
 .modal__container {
@@ -36,6 +40,7 @@
   background: transparent url(../images/Close.svg) no-repeat center;
   background-size: contain;
   transform: rotate(90deg);
+  cursor: pointer;
 }
 
 .modal__close:hover {
@@ -96,6 +101,11 @@
   opacity: 0.8;
 }
 
+.modal__image {
+  width: 433px;
+  height: 540px;
+}
+
 @media screen and (max-width: 620px) {
   .modal {
     top: -140px;
@@ -130,5 +140,10 @@
     margin: 45px 22px 25px;
     font-size: 14px;
     line-height: 16.94px;
+  }
+
+  .modal__image {
+    max-width: 75vw;
+    max-height: 75vh;
   }
 }

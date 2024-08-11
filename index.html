@@ -72,22 +72,32 @@
             name="title"
             id="profile-title-input"
             placeholder="Title"
-            class="modal__title modal__input_type_title"
+            class="modal__title modal__form-input modal__input_type_title"
           />
           <input
             type="text"
             name="url"
             id="profile-description-input"
             placeholder="Image URL"
-            class="modal__description modal__input_type_url"
+            class="modal__description modal__form-input modal__input_type_url"
           />
           <button class="modal__button">Save</button>
         </form>
       </div>
     </div>
 
+    <!-- -------------------------- Open Card Modal ---------------------------- -->
+    <div class="modal" id="preview-modal">
+      <div class="modal__container">
+        <button class="modal__close" id="modal__close"></button>
+        <img src="" alt="" class="modal__image" />
+        <p class="modal__title"></p>
+      </div>
+    </div>
+    <!-- -------------------------- Card Template ---------------------------- -->
     <template id="card-template">
       <li class="card">
+        <button class="card__delete-button" type="button"></button>
         <img src="" alt="" class="card__image" />
         <div class="card__description">
           <h2 class="card__title"></h2>

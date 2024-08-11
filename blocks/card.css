@@ -1,12 +1,14 @@
 .card {
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .card__image {
   width: 282px;
   height: 282px;
   border-radius: 10px 10px 0px 0px;
+  cursor: pointer;
 }
 
 .card__description {
@@ -35,7 +37,7 @@
 
 .card__like-button:hover {
   cursor: pointer;
-  background: transparent url(../images/Vector-hover.svg) center no-repeat;
+  opacity: 0.5;
 }
 
 .card__title {
@@ -48,4 +50,23 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+}
+
+.card__delete-button {
+  position: absolute;
+  top: 18px;
+  right: 15px;
+  background: transparent url(../images/Trash.svg) center no-repeat;
+  width: 18px;
+  height: 19.3px;
+  color: #fff;
+  border: none;
+}
+
+.card__delete-button:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+.card__delete-button_active {
+  border-image: url(../images/Trash_active.svg);
 }
