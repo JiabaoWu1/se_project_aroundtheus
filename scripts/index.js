@@ -57,7 +57,7 @@ const cardTitleInput = addCardFormElement.querySelector("[name='title']");
 const cardUrlInput = addCardFormElement.querySelector("[name='url']");
 const previewImage = previewImageModal.querySelector(".modal__image");
 const previewTitle = previewImageModal.querySelector(".modal__title");
-
+const closePreviewModal = () => closeModal(previewImageModal);
 /* -------------------------------------------------------------------------- */
 /*                                  Functions                                 */
 /* -------------------------------------------------------------------------- */
@@ -75,13 +75,10 @@ function renderCard(cardData, wrapper, method = "append") {
 }
 
 function openPreviewModal(cardData) {
-  const closePreviewModal = () => closeModal(previewImageModal);
   previewImage.src = cardData.link;
   previewImage.alt = cardData.name;
   previewTitle.textContent = cardData.name;
   openModal(previewImageModal);
-  previewClose.removeEventListener("click", closePreviewModal);
-  previewClose.addEventListener("click", closePreviewModal);
 }
 
 function getCardElement(cardData) {
@@ -125,7 +122,9 @@ function handleAddCardFormSubmit(e) {
   const link = cardUrlInput.value;
   const cardData = { name, link };
 
-  renderCard(cardData, cardListEl);
+  renderCard(cardData, cardListEl, (method = "prepend"));
+  cardTitleInput.value = "";
+  cardUrlInput.value = "";
 
   closeModal(addCardModal);
 }
@@ -158,3 +157,4 @@ addCardModalCloseButton.addEventListener("click", () =>
 );
 
 initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
+previewClose.addEventListener("click", closePreviewModal);
