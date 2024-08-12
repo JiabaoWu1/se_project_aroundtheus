@@ -42,6 +42,7 @@ const profileEditButton = document.querySelector("#profile-edit-button");
 const addNewCardButton = document.querySelector(".profile__add-button");
 const profileModalCloseButton = profileEditModal.querySelector(".modal__close");
 const addCardModalCloseButton = addCardModal.querySelector(".modal__close");
+const previewClose = previewImageModal.querySelector(".modal__close");
 const profileTitle = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile__description");
 
@@ -56,7 +57,7 @@ const cardTitleInput = addCardFormElement.querySelector("[name='title']");
 const cardUrlInput = addCardFormElement.querySelector("[name='url']");
 const previewImage = previewImageModal.querySelector(".modal__image");
 const previewTitle = previewImageModal.querySelector(".modal__title");
-const previewClose = previewImageModal.querySelector(".modal__close");
+
 /* -------------------------------------------------------------------------- */
 /*                                  Functions                                 */
 /* -------------------------------------------------------------------------- */
@@ -74,11 +75,13 @@ function renderCard(cardData, wrapper, method = "append") {
 }
 
 function openPreviewModal(cardData) {
+  const closePreviewModal = () => closeModal(previewImageModal);
   previewImage.src = cardData.link;
   previewImage.alt = cardData.name;
   previewTitle.textContent = cardData.name;
   openModal(previewImageModal);
-  previewClose.addEventListener("click", () => closeModal(previewImageModal));
+  previewClose.removeEventListener("click", closePreviewModal);
+  previewClose.addEventListener("click", closePreviewModal);
 }
 
 function getCardElement(cardData) {
@@ -117,9 +120,14 @@ function handleProfileEditSubmit(e) {
 
 function handleAddCardFormSubmit(e) {
   e.preventDefault();
-  cardListEl.prepend(cardElement);
+
+  const name = cardTitleInput.value;
+  const link = cardUrlInput.value;
+  const cardData = { name, link };
+
+  renderCard(cardData, cardListEl);
+
   closeModal(addCardModal);
-  return;
 }
 
 /* -------------------------------------------------------------------------- */
