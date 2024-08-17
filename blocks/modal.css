@@ -147,3 +147,29 @@
     max-height: 75vh;
   }
 }
+
+.modal__input_type_error {
+  width: 358px;
+  height: 0px;
+  top: 735px;
+  left: 107px;
+  gap: 0px;
+  border: 1px 0px 0px 0px;
+  opacity: 0px;
+  border-color: red;
+}
+
+.modal__input-error_active {
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14.52px;
+  text-align: left;
+  color: red;
+  opacity: 1;
+}
+
+.modal__button_disabled {
+  opacity: 0.7;
+  pointer-events: none;
+}
