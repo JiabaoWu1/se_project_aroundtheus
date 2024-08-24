@@ -15,7 +15,7 @@
           alt="Around the U.S. Logo"
         />
       </header>
-      <main class="content page__section">
+      <main class="page__section">
         <section class="profile modal__overlay">
           <img src="./images/Avatar.png" alt="Avatar" class="profile__image" />
           <div class="profile__info">
@@ -29,7 +29,7 @@
           </div>
           <button class="profile__add-button" type="button"></button>
         </section>
-        <section class="cards page__section">
+        <section class="cards">
           <ul class="cards__list"></ul>
         </section>
       </main>
@@ -43,7 +43,7 @@
         <button class="modal__close" id="modal__close"></button>
         <p class="modal__heading">Edit Profile</p>
         <form class="modal__form">
-          <label class="modal__label">
+          <label class="modal__input">
             <input
               type="text"
               name="title"
@@ -60,7 +60,7 @@
               id="profile-title-input-error"
             ></span
           ></label>
-          <label class="modal__label">
+          <label class="modal__input">
             <input
               type="text"
               name="card__description"
@@ -88,7 +88,7 @@
         <button class="modal__close"></button>
         <p class="modal__heading">New Place</p>
         <form class="modal__form" id="add-card-form">
-          <label class="modal__label">
+          <label class="modal__input">
             <input
               type="text"
               name="title"
@@ -104,7 +104,7 @@
               id="add-title-input-error"
             ></span>
           </label>
-          <label class="modal__label">
+          <label class="modal__input">
             <input
               type="url"
               name="url"

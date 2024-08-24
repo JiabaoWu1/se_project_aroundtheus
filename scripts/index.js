@@ -68,16 +68,15 @@ function closeModal(modal) {
   modal.removeEventListener("mousedown", closeOverlay);
 }
 function closeModalEsc(evt) {
-  const modalOpened = document.querySelector(".modal_opened");
   if (evt.key === "Escape") {
+    const modalOpened = document.querySelector(".modal_opened");
     closeModal(modalOpened);
   }
 }
 
 function closeOverlay(evt) {
-  const modalOpened = document.querySelector(".modal_opened");
   if (evt.target.classList.contains("modal_opened")) {
-    closeModal(modalOpened);
+    closeModal(evt.target);
   }
 }
 
@@ -87,7 +86,7 @@ function openModal(modal) {
   modal.addEventListener("mousedown", closeOverlay);
 }
 
-function renderCard(cardData, wrapper, method = "append") {
+function renderCard(cardData, wrapper = cardListEl, method = "append") {
   const cardElement = getCardElement(cardData);
   wrapper[method](cardElement);
 }
@@ -140,10 +139,10 @@ function handleAddCardFormSubmit(e) {
   const link = cardUrlInput.value;
   const cardData = { name, link };
 
-  renderCard(cardData, cardListEl, (method = "prepend"));
+  renderCard(cardData, cardListEl, "prepend");
   cardTitleInput.value = "";
   cardUrlInput.value = "";
-
+  evt.target.reset();
   closeModal(addCardModal);
 }
 
@@ -166,8 +165,6 @@ profileEditButton.addEventListener("click", () => {
 profileModalCloseButton.addEventListener("click", () =>
   closeModal(profileEditModal)
 );
-profileEditForm.addEventListener("submit", handleProfileEditSubmit);
-
 // add new card button
 addNewCardButton.addEventListener("click", () => openModal(addCardModal));
 addCardModalCloseButton.addEventListener("click", () =>
