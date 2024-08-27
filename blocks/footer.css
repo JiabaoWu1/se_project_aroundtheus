@@ -1,3 +1,10 @@
+.footer {
+  max-width: 880px;
+  width: 100%;
+  position: relative;
+  margin: 0 auto;
+}
+
 .footer__description {
   margin: 0;
   font-family: "Inter", Arial, sans-serif;

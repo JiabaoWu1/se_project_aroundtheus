@@ -8,15 +8,15 @@
   </head>
   <body class="page">
     <div class="page__content">
-      <header class="header page__section">
+      <header class="header">
         <img
           class="header__image"
           src="./images/Vector.svg"
           alt="Around the U.S. Logo"
         />
       </header>
-      <main class="page__section">
-        <section class="profile modal__overlay">
+      <main class="main">
+        <section class="profile">
           <img src="./images/Avatar.png" alt="Avatar" class="profile__image" />
           <div class="profile__info">
             <h1 class="profile__title">Jaeques Cousteau</h1>
@@ -33,7 +33,7 @@
           <ul class="cards__list"></ul>
         </section>
       </main>
-      <footer class="footer page__section">
+      <footer class="footer">
         <p class="footer__description">@ 2022 Around the U.S.</p>
       </footer>
     </div>
@@ -48,36 +48,33 @@
               type="text"
               name="title"
               maxlength="40"
-              ;
               minlength="2"
-              ;
               required
               id="profile-title-input"
               placeholder="Name"
-              class="modal__title modal__form-input" />
+              class="modal__title modal__form-input"
+            />
             <span
-              class="modal__input_type_error"
+              class="modal__input-error"
               id="profile-title-input-error"
-            ></span
-          ></label>
+            ></span>
+          </label>
           <label class="modal__input">
             <input
               type="text"
               name="card__description"
               maxlength="200"
-              ;
               minlength="2"
-              ;
               required
               id="profile-description-input"
               placeholder="Description"
-              class="modal__description modal__form-input" />
+              class="modal__description modal__form-input"
+            />
             <span
-              class="modal__input_type_error"
+              class="modal__input-error"
               id="profile-description-input-error"
-            ></span
-          ></label>
-
+            ></span>
+          </label>
           <button class="modal__button">Save</button>
         </form>
       </div>
@@ -99,10 +96,7 @@
               class="modal__title modal__form-input"
               required
             />
-            <span
-              class="modal__input_type_error"
-              id="add-title-input-error"
-            ></span>
+            <span class="modal__input-error" id="add-title-input-error"></span>
           </label>
           <label class="modal__input">
             <input
@@ -114,7 +108,7 @@
               required
             />
             <span
-              class="modal__input_type_error"
+              class="modal__input-error"
               id="add-description-input-error"
             ></span>
           </label>
