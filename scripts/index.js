@@ -125,15 +125,15 @@ function getCardElement(cardData) {
 /*                               Event Handlers                               */
 /* -------------------------------------------------------------------------- */
 
-function handleProfileEditSubmit(e) {
-  e.preventDefault();
+function handleProfileEditSubmit(evt) {
+  evt.preventDefault();
   profileTitle.textContent = profileTitleInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
   closeModal(profileEditModal);
 }
 
-function handleAddCardFormSubmit(e) {
-  e.preventDefault();
+function handleAddCardFormSubmit(evt) {
+  evt.preventDefault();
 
   const name = cardTitleInput.value;
   const link = cardUrlInput.value;
