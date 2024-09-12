@@ -1,18 +1,26 @@
-function showInputError(formEl, inputEl, { inputErrorClass, errorClass }) {
+export function showInputError(
+  formEl,
+  inputEl,
+  { inputErrorClass, errorClass }
+) {
   const errorMessageEl = formEl.querySelector(`#${inputEl.id}-error`);
   inputEl.classList.add(inputErrorClass);
   errorMessageEl.textContent = inputEl.validationMessage;
   errorMessageEl.classList.add(errorClass);
 }
 
-function hideInputError(formEl, inputEl, { inputErrorClass, errorClass }) {
+export function hideInputError(
+  formEl,
+  inputEl,
+  { inputErrorClass, errorClass }
+) {
   const errorMessageEl = formEl.querySelector(`#${inputEl.id}-error`);
   inputEl.classList.remove(inputErrorClass);
   errorMessageEl.textContent = "";
   errorMessageEl.classList.remove(errorClass);
 }
 
-function checkInputValidity(formEl, inputEl, options) {
+export function checkInputValidity(formEl, inputEl, options) {
   if (!inputEl.validity.valid) {
     showInputError(formEl, inputEl, options);
   } else {
@@ -20,7 +28,11 @@ function checkInputValidity(formEl, inputEl, options) {
   }
 }
 
-function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
+export function toggleButtonState(
+  inputEls,
+  submitButton,
+  { inactiveButtonClass }
+) {
   const foundInvalid = inputEls.some((inputEl) => !inputEl.validity.valid);
   if (foundInvalid) {
     submitButton.classList.add(inactiveButtonClass);
@@ -31,7 +43,7 @@ function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
   }
 }
 
-function setEventListeners(formEl, options) {
+export function setEventListeners(formEl, options) {
   const inputEls = Array.from(formEl.querySelectorAll(options.inputSelector));
   const submitButton = formEl.querySelector(options.submitButtonSelector);
 
@@ -46,7 +58,7 @@ function setEventListeners(formEl, options) {
   });
 }
 
-function enableValidation(options) {
+export function enableValidation(options) {
   const formEls = Array.from(document.querySelectorAll(options.formSelector));
   formEls.forEach((formEl) => {
     formEl.addEventListener("submit", (evt) => {
