@@ -6,15 +6,6 @@ export default class Card {
     this._handleImageClick = handleImageClick;
   }
 
-  _getTemplate() {
-    const cardElement = document
-      .querySelector(this._cardSelector)
-      .content.querySelector(".card")
-      .cloneNode(true);
-
-    return cardElement;
-  }
-
   _setEventListeners() {
     this._cardElement
       .querySelector(".card__like-button")
@@ -29,7 +20,7 @@ export default class Card {
       });
 
     this._cardImageElement.addEventListener("click", () => {
-      this._handleImageClick(this);
+      this._handleImageClick({ name: this._name, link: this._link });
     });
   }
 
@@ -43,6 +34,19 @@ export default class Card {
     this._cardElement.remove();
     this._cardElement = null;
   }
+  // _createCard(cardData) {
+  //   const card = new Card(cardData, "#card-template", openPreviewModal);
+  //   return card.getView();
+  // }
+
+  _getTemplate() {
+    const cardElement = document
+      .querySelector(this._cardSelector)
+      .content.querySelector(".card")
+      .cloneNode(true);
+
+    return cardElement;
+  }
 
   getView() {
     this._cardElement = this._getTemplate();
@@ -51,6 +55,7 @@ export default class Card {
     this._cardNameElement = this._cardElement.querySelector(".card__title");
 
     this._cardNameElement.textContent = this._name;
+    this._cardNameElement.alt = this._name;
     this._cardImageElement.src = this._link;
 
     this._setEventListeners();
