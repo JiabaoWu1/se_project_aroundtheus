@@ -84,6 +84,8 @@ const addFormValidator = new FormValidator(
   addCardFormElement
 );
 
+editFormValidator.enableValidation();
+addFormValidator.enableValidation();
 /* -------------------------------------------------------------------------- */
 /*                                  Functions                                 */
 /* -------------------------------------------------------------------------- */
