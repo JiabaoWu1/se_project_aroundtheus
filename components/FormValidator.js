@@ -20,8 +20,8 @@ export default class FormValidator {
     const errorMessageEl = this._formEl.querySelector(
       `#${inputElement.id}-error`
     );
-    inputElement.classList.remove(this.inputErrorClass);
-    errorMessageEl.classList.remove(this.errorClass);
+    inputElement.classList.remove(this._inputErrorClass);
+    errorMessageEl.classList.remove(this._errorClass);
     errorMessageEl.textContent = "";
   }
 
@@ -50,12 +50,12 @@ export default class FormValidator {
     const foundInvalid = false;
 
     if (this._hasInvalidInput(inputEls)) {
-      submitButton.classList.add(this._inactiveButtonClass);
-      submitButton.disabled = true;
+      this._submitButton.classList.add(this._inactiveButtonClass);
+      this._submitButton.disabled = true;
       return;
     }
-    submitButton.classList.remove(this._inactiveButtonClass);
-    submitButton.disabled = false;
+    this._submitButton.classList.remove(this._inactiveButtonClass);
+    this._submitButton.disabled = false;
   }
 
   _setEventListeners() {
