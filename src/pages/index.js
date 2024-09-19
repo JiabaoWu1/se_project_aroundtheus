@@ -61,10 +61,10 @@ const addCardModal = new PopupWithForm(
 );
 addCardModal.setEventListeners();
 
-const editProfileModal = new PopupWithForm({
-  popupSelector: "#profile-edit-modal",
-  handleFormSubmit: handleProfileEditSubmit,
-});
+const editProfileModal = new PopupWithForm(
+  "#profile-edit-modal",
+  handleProfileEditSubmit
+);
 editProfileModal.setEventListeners();
 cardAddButton.addEventListener("click", () => {
   addFormValidator._toggleButtonState();
