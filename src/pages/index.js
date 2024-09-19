@@ -24,6 +24,8 @@ const profileEditModal = document.querySelector("#profile-edit-modal");
 const profileEditForm = profileEditModal.querySelector(".modal__form");
 const addCardModalEl = document.querySelector("#add-card-modal");
 const addCardFormElement = addCardModalEl.querySelector(".modal__form");
+const cardAddButton = document.querySelector(".profile__add-button");
+const profileEditButton = document.querySelector("#profile-edit-button");
 
 const editFormValidator = new FormValidator(
   validationSettings,
