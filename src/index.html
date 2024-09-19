@@ -4,20 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Around the U.S.</title>
-    <link rel="stylesheet" href="./pages/index.css" />
   </head>
   <body class="page">
     <div class="page__content">
       <header class="header">
         <img
           class="header__image"
-          src="./images/Vector.svg"
+          src="<%=require('./images/Vector.svg')%>"
           alt="Around the U.S. Logo"
         />
       </header>
       <main class="main">
         <section class="profile">
-          <img src="./images/Avatar.png" alt="Avatar" class="profile__image" />
+          <img
+            src="<%=require('./images/Avatar.png')%>"
+            alt="Avatar"
+            class="profile__image"
+          />
           <div class="profile__info">
             <h1 class="profile__title">Jaeques Cousteau</h1>
             <button
@@ -34,7 +37,7 @@
         </section>
       </main>
       <footer class="footer">
-        <p class="footer__description">@ 2022 Around the U.S.</p>
+        <p class="footer__description">@ 2024 Around the U.S.</p>
       </footer>
     </div>
     <!-- ----------------------------- Edit Modal ------------------------------ -->
@@ -143,6 +146,6 @@
       </li>
     </template>
 
-    <script src="./pages/index.js" type="module"></script>
+    <!-- <script src="./pages/index.js" type="module"></script> -->
   </body>
 </html>
