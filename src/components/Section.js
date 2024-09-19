@@ -1,5 +1,5 @@
 export default class Section {
-  constructor({ renderer, selector }) {
+  constructor({ items, renderer }, selector) {
     this._renderer = renderer;
     this._element = document.querySelector(selector);
     this._items = items;
@@ -12,14 +12,14 @@ export default class Section {
   }
 
   appendItem(element) {
-    this._container.append(element);
+    this._element.append(element);
   }
 
   clear() {
-    this._container.innerHTML = "";
+    this._element.innerHTML = "";
   }
 
   addItem(element) {
-    this._container.prepend(element);
+    this._element.prepend(element);
   }
 }

@@ -22,7 +22,8 @@ const validationSettings = {
 
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const profileEditForm = profileEditModal.querySelector(".modal__form");
-const addCardFormElement = addCardModal.querySelector(".modal__form");
+const addCardModalEl = document.querySelector("#add-card-modal");
+const addCardFormElement = addCardModalEl.querySelector(".modal__form");
 
 const editFormValidator = new FormValidator(
   validationSettings,
@@ -50,10 +51,14 @@ const userInfo = new UserInfo({
   descriptionSelector: ".profile__description",
 });
 
-const addCardModal = new PopupWithForm({
-  popupSelector: "#add-card-modal",
-  handleFormSubmit: handleAddCardFormSubmit,
-});
+// const addCardModal = new PopupWithForm({
+//   popupSelector: "#add-card-modal",
+//   handleFormSubmit: handleAddCardFormSubmit,
+// });
+const addCardModal = new PopupWithForm(
+  "#add-card-modal",
+  handleAddCardFormSubmit
+);
 addCardModal.setEventListeners();
 
 const editProfileModal = new PopupWithForm({
@@ -108,5 +113,5 @@ function handleAddCardFormSubmit(formValues) {
 
 function createCard(data) {
   const card = new Card(data, "#card-template", handleImageClick);
-  return card.generateCard();
+  return card.getView();
 }
