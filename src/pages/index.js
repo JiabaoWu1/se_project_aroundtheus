@@ -103,13 +103,13 @@ function handleImageClick(data) {
 function handleProfileEditSubmit(formValues) {
   userInfo.setUserInfo({
     name: formValues.title,
-    about: formValues.about,
+    about: formValues.card__description,
   });
   editProfileModal.close();
 }
 function handleAddCardFormSubmit(formValues) {
   const name = formValues.title;
-  const link = formValues.link;
+  const link = formValues.url;
 
   const card = createCard({ name, link });
   cardList.addItem(card);
