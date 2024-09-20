@@ -5,18 +5,40 @@ import FormValidator from "../components/FormValidator.js";
 import Card from "../components/Card.js";
 import Section from "../components/Section.js";
 import Popup from "../components/Popup.js";
-import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithImage from "../components/PopupwithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
-import profileEditModal from "../utils/constants.js";
-import profileEditForm from "../utils/constants.js";
-import addCardModalEl from "../utils/constants.js";
-import addCardFormElement from "../utils/constants.js";
-import cardAddButton from "../utils/constants.js";
-import profileEditButton from "../utils/constants.js";
-import profileTitleInput from "../utils/constants.js";
-import profileDescriptionInput from "../utils/constants.js";
 
+/* ------------------------- Set up all the classes ------------------------- */
+
+const validationSettings = {
+  formSelector: ".modal__form",
+  inputSelector: ".modal__form-input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__input-error_active",
+};
+
+const profileEditModal = document.querySelector("#profile-edit-modal");
+const profileEditForm = profileEditModal.querySelector(".modal__form");
+const addCardModalEl = document.querySelector("#add-card-modal");
+const addCardFormElement = addCardModalEl.querySelector(".modal__form");
+const cardAddButton = document.querySelector(".profile__add-button");
+const profileEditButton = document.querySelector("#profile-edit-button");
+const profileTitleInput = document.querySelector("#profile-title-input");
+const profileDescriptionInput = document.querySelector(
+  "#profile-description-input"
+);
+
+const editFormValidator = new FormValidator(
+  validationSettings,
+  profileEditForm
+);
+const addFormValidator = new FormValidator(
+  validationSettings,
+  addCardFormElement
+);
 /* --------------------- Create instances of the classes -------------------- */
 const cardList = new Section(
   {
@@ -50,11 +72,10 @@ const editProfileModal = new PopupWithForm(
   handleProfileEditSubmit
 );
 editProfileModal.setEventListeners();
-//----------------------------------------------------------------------------------------
-//                                  Event Handlers
-//----------------------------------------------------------------------------------------
+
+/* ------------------------------ event handler ----------------------------- */
 cardAddButton.addEventListener("click", () => {
-  // addFormValidator._toggleButtonState();
+  addFormValidator.toggleButtonState();
   addCardModal.open();
 });
 
@@ -69,25 +90,16 @@ const imagePopup = new PopupWithImage("#preview-modal");
 imagePopup.setEventListeners();
 
 // Enable form validation
-const editFormValidator = new FormValidator(
-  validationSettings,
-  profileEditForm
-);
-const addFormValidator = new FormValidator(
-  validationSettings,
-  addCardFormElement
-);
 
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
 /* -------------------------------------------------------------------------- */
-/*                             Event Handlers                                 */
+/*                                 Functions;                                 */
 /* -------------------------------------------------------------------------- */
 function handleImageClick(data) {
   imagePopup.open(data);
 }
-
 function handleProfileEditSubmit(formValues) {
   userInfo.setUserInfo({
     name: formValues.title,
@@ -95,20 +107,16 @@ function handleProfileEditSubmit(formValues) {
   });
   editProfileModal.close();
 }
-
 function handleAddCardFormSubmit(formValues) {
-  console.log(formValues);
   const name = formValues.title;
   const link = formValues.link;
+
   const card = createCard({ name, link });
   cardList.addItem(card);
-  addCardModal.close();
   addCardFormElement.reset();
+  addCardModal.close();
 }
 
-/* -------------------------------------------------------------------------- */
-/*                                 Functions;                                 */
-/* -------------------------------------------------------------------------- */
 function createCard(data) {
   const card = new Card(data, "#card-template", handleImageClick);
   return card.getView();
