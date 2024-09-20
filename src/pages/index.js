@@ -8,17 +8,8 @@ import Popup from "../components/Popup.js";
 import PopupWithImage from "../components/PopupwithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
-
+import { validationSettings } from "../utils/constants.js";
 /* ------------------------- Set up all the classes ------------------------- */
-
-const validationSettings = {
-  formSelector: ".modal__form",
-  inputSelector: ".modal__form-input",
-  submitButtonSelector: ".modal__button",
-  inactiveButtonClass: "modal__button_disabled",
-  inputErrorClass: "modal__input_type_error",
-  errorClass: "modal__input-error_active",
-};
 
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const profileEditForm = profileEditModal.querySelector(".modal__form");
@@ -62,9 +53,10 @@ const userInfo = new UserInfo({
 //   handleFormSubmit: handleAddCardFormSubmit,
 // });
 const addCardModal = new PopupWithForm(
-  "#add-card-modal",
+  selectors.addCardModalSelector,
   handleAddCardFormSubmit
 );
+
 addCardModal.setEventListeners();
 
 const editProfileModal = new PopupWithForm(
