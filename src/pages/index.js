@@ -1,5 +1,6 @@
 import "./index.css";
 /* ------------------------- Import all the classes ------------------------- */
+import Api from "../components/Api.js";
 import { initialCards, selectors } from "../utils/constants.js";
 import FormValidator from "../components/FormValidator.js";
 import Card from "../components/Card.js";
@@ -9,7 +10,48 @@ import PopupWithImage from "../components/PopupwithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 import { validationSettings } from "../utils/constants.js";
-/* ------------------------- Set up all the classes ------------------------- */
+
+// /* -------------------------------------------------------------------------- */
+// /*                                    API;                                    */
+// /* -------------------------------------------------------------------------- */
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1/cards",
+  headers: {
+    authorization: "9bd6fe3e-e63d-4619-b9fe-4bda3d127f2c",
+    "Content-Type": "application/json",
+  },
+});
+
+let cardSection;
+
+api
+  .getUserInfo()
+  .then((data) => {
+    console.log(data);
+    userInfo.setUserInfo(data);
+    userInfo.setAvatar(data.modal);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+const handleModalSubmit = ({ modal }) => {
+  editModalPopup.setLoading(true);
+  api
+    .updateAvatar(modal)
+    .then((data) => {
+      userInfo.setAvatar(data.modal);
+      editAvatarPopup.close();
+      FormValidator["edit-avatar-form"].toggleButtonState();
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+    .finally(() => {
+      editModalPopup.setLoading(false);
+    });
+};
+// -------------- Set up all the Validators & Constants ------------------------- */
 
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const profileEditForm = profileEditModal.querySelector(".modal__form");
@@ -80,7 +122,7 @@ profileEditButton.addEventListener("click", () => {
 
 const imagePopup = new PopupWithImage("#preview-modal");
 imagePopup.setEventListeners();
-
+const trashConfirmPopup = new PopupWithConfirm("#trashcan-modal");
 // Enable form validation
 
 editFormValidator.enableValidation();
@@ -109,7 +151,79 @@ function handleAddCardFormSubmit(formValues) {
   addCardModal.close();
 }
 
+function handleDelete(card) {
+  trashConfirmPopup.setSubmitFunction(() => {
+    api
+      .deleteCard(card._id)
+      .then(() => {
+        card.removeCard();
+        trashConfirmPopup.close();
+      })
+      .catch((err) => {
+        console.error("Error deleting card:", err);
+      });
+  });
+  trashConfirmPopup.open();
+}
+
+function handleLikeIconClick(card) {
+  console.log(card);
+  const apiAction = card.isLiked
+    ? api.deleteCard(card._id)
+    : api.putCardLike(card._id);
+
+  apiAction
+    .then(() => {
+      card.isLiked = !card.isLiked;
+      card.updateHeartIcon(card.isLiked);
+    })
+    .catch((err) => {
+      console.error(`Error ${card.isLiked ? "unliking" : "liking"} card:`, err);
+    });
+}
+
 function createCard(data) {
-  const card = new Card(data, "#card-template", handleImageClick);
+  const card = new Card(
+    data,
+    "#card-template",
+    handleImageClick,
+    () => handleDelete(card),
+    () => handleLikeIconClick(card)
+  );
   return card.getView();
 }
+
+//render initialcards
+api
+  .getInitialCards()
+  .then((cards) => {
+    console.log(cards);
+    cardSection.renderItems(cards);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+
+// API Calls
+api
+  .getProfile()
+  .then((currentUser) => {
+    currentUserId = currentUser._id;
+    userInfo.setUserInfo(
+      currentUser.name,
+      currentUser.about,
+      currentUser.avatar
+    );
+  })
+  .catch((err) => {
+    console.error("Failed to load user information:", err);
+  });
+
+api
+  .getCards()
+  .then((cardsData) => {
+    cardSection.renderItems(cardsData);
+  })
+  .catch((err) => {
+    console.error("Error fetching initial cards", err);
+  });

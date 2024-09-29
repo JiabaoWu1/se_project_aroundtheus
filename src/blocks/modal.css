@@ -178,3 +178,26 @@
   opacity: 0.7;
   pointer-events: none;
 }
+
+.modal__confirmation {
+  width: 358px;
+  height: 23px;
+  top: 304px;
+  left: 461px;
+  background: #000000;
+}
+
+.modal__response {
+  width: 358px;
+  height: 50px;
+  top: 365px;
+  left: 461px;
+  border-radius: 2px 0px 0px 0px;
+  opacity: 0px;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21.78px;
+  text-align: center;
+  background: #ffffff;
+}
