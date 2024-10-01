@@ -122,7 +122,7 @@ profileEditButton.addEventListener("click", () => {
 
 const imagePopup = new PopupWithImage("#preview-modal");
 imagePopup.setEventListeners();
-const trashConfirmPopup = new PopupWithConfirm("#trashcan-modal");
+const trashConfirmPopup = new PopupWithForm("#trashcan-modal");
 // Enable form validation
 
 editFormValidator.enableValidation();
