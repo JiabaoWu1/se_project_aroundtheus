@@ -1,12 +1,29 @@
-Project name: Around the U.S.
+# Project Name: Around The U.S.
 
-Project Description:
-A project about travel lovers sharing and appreciating their adventures within the U.S. which includes the functions of uploading pictures and editing user profiles.
+Overview:
 
-Technologies and techniques used:
-HTML and CSS are the technologies used for this project. Both flexbox and grid were used as a fine combination of the techniques used in this project.
+- Intro
+- Figma
+- Images
 
-Video for project 3 presentation:
-https://drive.google.com/file/d/1H4gCBlL1_KcteYX4Ai7wiYMypC303mR2/view?usp=sharing
+**Intro**
+This project is made so all the elements are displayed correctly on popular screen sizes. To fit as a responsive website between desktop, and mobile per figma, but also see usage in Tablet mode as well.
+HTML, and CSS were used in creating this responsive website with the use of grid and flex box. As such I invested a lot more time in this project than previous ones combining what I had learned through the past 3 courses.
 
-Check out the live project here: [Around The U.S. GitHub Pages](https://JiabaoWu1.github.io/se_project_aroundtheus/)
+**Figma**
+
+- [Link to the project on Figma]
+
+- [Link to project on Github](https:)
+
+**IMAGES**
+
+- [Link to Desktop view](https://gyazo.com/300980c6ba965ec6c63087ded376df08)
+
+- [Link to tablet view](https://gyazo.com/0ac0537aa2db4ca414d1f31605df9356)
+
+-[Link to mobile view](https://gyazo.com/6b49ffad0c382bc11c50a31b9043443e)
+
+**WEBSITE**
+
+[Link to Final Website view](https:)
