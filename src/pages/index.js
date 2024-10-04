@@ -7,7 +7,7 @@ import Card from "../components/Card.js";
 import Section from "../components/Section.js";
 // import Popup from "../components/Popup.js";
 import PopupWithImage from "../components/PopupwithImage.js";
-import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithForm from "../components/PopupWithForm1.js";
 import UserInfo from "../components/UserInfo.js";
 import { validationSettings } from "../utils/constants.js";
 import PopupWithConfirm from "../components/PopupWithConfirm.js";
