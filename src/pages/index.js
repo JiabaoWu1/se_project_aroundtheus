@@ -5,7 +5,7 @@ import { initialCards, selectors } from "../utils/constants.js";
 import FormValidator from "../components/FormValidator.js";
 import Card from "../components/Card.js";
 import Section from "../components/Section.js";
-import Popup from "../components/Popup.js";
+// import Popup from "../components/Popup.js";
 import PopupWithImage from "../components/PopupwithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
@@ -248,27 +248,6 @@ function handleLikeClick(data) {
         console.error(err);
       });
   }
-}
-
-function handleDeleteClick(card) {
-  const cardId = card._id;
-  if (!cardId) {
-    console.error("card._id is undefined");
-    return;
-  }
-  confirmDeleteModal.setSubmitFunction(() => {
-    api
-      .handleDeleteCard(cardId)
-      .then((res) => {
-        console.log(res);
-        card.handleDeleteCard();
-        confirmDeleteModal.close();
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  });
-  confirmDeleteModal.open();
 }
 
 function createCard(cardData) {

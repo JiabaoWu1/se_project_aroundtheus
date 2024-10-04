@@ -1,3 +1,5 @@
+import Popup from "./Popup.js";
+
 export default class PopupWithConfirm extends Popup {
   constructor(popupSelector) {
     super({ popupSelector });
@@ -6,8 +8,16 @@ export default class PopupWithConfirm extends Popup {
   setSubmitFunction(submitFunction) {
     this._handleFormSubmit = submitFunction;
   }
+
+  setEventListeners() {
+    super.setEventListeners();
+    this._form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      this._submitFunction();
+    });
+  }
 }
 
-trashConfirmPopup.addEvenetListener("click", () => {
-  this._handleFormSubmit();
-});
+// PopupWithConfirm.addEvenetListener("click", () => {
+//   this._handleFormSubmit();
+// });
