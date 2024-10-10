@@ -3,7 +3,7 @@ import Popup from "./Popup.js";
 export default class PopupWithConfirm extends Popup {
   constructor(popupSelector) {
     super({ popupSelector });
-    this._form = document.querySelector("#trashcan-modal");
+    this._form = this._popupElement.querySelector(".modal__form");
   }
 
   setSubmitFunction(submitFunction) {
