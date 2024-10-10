@@ -132,7 +132,7 @@ editProfileModal.setEventListeners();
 /* ------------------------------ event listeners ----------------------------- */
 cardAddButton.addEventListener("click", () => {
   addFormValidator.toggleButtonState();
-  addCardModalEl.open();
+  addCardPopup.open();
 });
 
 profileEditButton.addEventListener("click", () => {
@@ -277,12 +277,11 @@ api
   .getUserInfo()
   .then((currentUser) => {
     currentUser = currentUser._id;
-    userInfo.setUserInfo(
-      currentUser.name,
-      currentUser.about,
-      currentUser.avatar
-    );
-    userInfo.setAvatarInfo(avatar);
+    userInfo.setUserInfo({
+      name: currentUser.name,
+      about: currentUser.about,
+    });
+    userInfo.setAvatarInfo(currentUser.avatar);
   })
   .catch((err) => {
     console.error("Failed to load user information:", err);
