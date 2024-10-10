@@ -28,7 +28,7 @@ const profileDescriptionInput = document.querySelector(
 // /*                                    API;                                    */
 // /* -------------------------------------------------------------------------- */
 const api = new Api({
-  baseUrl: "https://around-api.en.tripleten-services.com/v1/cards",
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
   headers: {
     authorization: "9bd6fe3e-e63d-4619-b9fe-4bda3d127f2c",
     "Content-Type": "application/json",
@@ -48,9 +48,7 @@ const api = new Api({
 //     console.log(err);
 //   });
 
-const previewImagePopup = new PopupWithImage({
-  popupSelector: "#preview-modal",
-});
+const previewImagePopup = new PopupWithImage("#preview-modal");
 previewImagePopup.setEventListeners();
 
 const cardList = new Section(
@@ -63,10 +61,20 @@ const cardList = new Section(
   },
   ".cards__list"
 );
+api
+  .getInitialCards()
+  .then((cards) => {
+    console.log(cards);
+    cardList.renderItems(cards);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+
 cardList.renderItems();
 
 const confirmDeleteModal = new PopupWithConfirm(
-  "#delete-modal",
+  "#trashcan-modal",
   handleDeleteClick
 );
 confirmDeleteModal.setEventListeners();
@@ -138,14 +146,12 @@ const imagePopup = new PopupWithImage("#preview-modal");
 imagePopup.setEventListeners();
 
 // add event listener to avatar
-document
-  .querySelector(".profile__avatar-edit")
-  .addEventListener("click", () => {
-    editAvatarModal.open();
-  });
+document.querySelector(".modal__avatar").addEventListener("click", () => {
+  editAvatarModal.open();
+});
 // when it fires, open avatar image modal
 
-// Enable form validation
+/* ------------------------ Enable form validation ------------------------ */
 
 const editFormValidator = new FormValidator(
   validationSettings,
@@ -156,7 +162,10 @@ const addFormValidator = new FormValidator(
   addCardFormElement
 );
 
-const editAvatarValidator = new FormValidator(validationSettings, editAvatar);
+const editAvatarValidator = new FormValidator(
+  validationSettings,
+  document.querySelector("#edit-avatar-modal")
+);
 
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
@@ -262,19 +271,10 @@ function createCard(cardData) {
 }
 
 //render initialcards
-api
-  .getInitialCards()
-  .then((cards) => {
-    console.log(cards);
-    cardList.renderItems(cards);
-  })
-  .catch((err) => {
-    console.error(err);
-  });
 
 // API Calls
 api
-  .getProfile()
+  .getUserInfo()
   .then((currentUser) => {
     currentUser = currentUser._id;
     userInfo.setUserInfo(
