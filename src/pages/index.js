@@ -276,12 +276,12 @@ function createCard(cardData) {
 api
   .getUserInfo()
   .then((currentUser) => {
-    currentUser = currentUser._id;
     userInfo.setUserInfo({
       name: currentUser.name,
       about: currentUser.about,
     });
     userInfo.setAvatarInfo(currentUser.avatar);
+    currentUser = currentUser._id;
   })
   .catch((err) => {
     console.error("Failed to load user information:", err);
