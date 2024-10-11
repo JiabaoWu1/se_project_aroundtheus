@@ -101,7 +101,7 @@ const addCardPopup = new PopupWithForm("#add-card-modal", (data) => {
     link: data.url,
   };
 
-  addCardPopup.setLoading("Saving...");
+  addCardPopup.setLoadingState("Saving...");
 
   api
     .addCards(cardData)
