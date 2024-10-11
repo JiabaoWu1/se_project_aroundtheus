@@ -53,7 +53,6 @@ previewImagePopup.setEventListeners();
 
 const cardList = new Section(
   {
-    items: initialCards,
     renderer: (item) => {
       const cardELement = createCard(item);
       cardList.addItem(cardELement);
@@ -70,8 +69,6 @@ api
   .catch((err) => {
     console.error(err);
   });
-
-cardList.renderItems();
 
 const confirmDeleteModal = new PopupWithConfirm(
   "#trashcan-modal",
@@ -104,7 +101,7 @@ const addCardPopup = new PopupWithForm("#add-card-modal", (data) => {
   addCardPopup.setLoadingState("Saving...");
 
   api
-    .addCards(cardData)
+    .createNewCard(cardData)
     .then((res) => {
       const card = createCard(res);
       cardList.addItem(card);
@@ -233,41 +230,39 @@ function handleDeleteClick(card) {
   confirmDeleteModal.open();
 }
 
-function handleLikeClick(data) {
-  if (!data.isLiked) {
-    api
-      .likeCard(data._id, { method: "PUT" })
-      .then((res) => {
-        console.log(res);
-        data.isLiked = true;
-        data.toggleLike();
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  } else {
-    api
-      .dislikeCard(data._id, { method: "DELETE" })
-      .then((res) => {
-        console.log(res);
-        data.isLiked = false;
-        data.toggleLike();
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }
-}
-
 function createCard(cardData) {
-  const cardElement = new Card(
+  const card = new Card(
     cardData,
     "#card-template",
     handleCardPreview,
-    handleLikeClick,
+    (data) => {
+      if (!data.isLiked) {
+        api
+          .likeCard(data._id, { method: "PUT" })
+          .then((res) => {
+            console.log(res);
+            data.isLiked = true;
+            card.toggleLike();
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      } else {
+        api
+          .dislikeCard(data._id, { method: "DELETE" })
+          .then((res) => {
+            console.log(res);
+            data.isLiked = false;
+            card.toggleLike();
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      }
+    },
     handleDeleteClick
   );
-  return cardElement.getView();
+  return card.getView();
 }
 
 //render initialcards

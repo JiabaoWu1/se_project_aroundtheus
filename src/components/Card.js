@@ -1,22 +1,31 @@
 export default class Card {
-  constructor({ name, link }, cardSelector, handleImageClick) {
-    this._name = name;
-    this._link = link;
+  constructor(
+    data,
+    cardSelector,
+    handleImageClick,
+    handleLikeClick,
+    handleDeleteClick
+  ) {
+    this._name = data.name;
+    this._link = data.link;
+    this._data = data;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
+    this._handleLikeClick = handleLikeClick;
+    this._handleDeleteClick = handleDeleteClick;
   }
 
   _setEventListeners() {
     this._cardElement
       .querySelector(".card__like-button")
       .addEventListener("click", () => {
-        this._handleLikeIcon();
+        this._handleLikeClick(this._data);
       });
 
     this._cardElement
       .querySelector(".card__delete-button")
       .addEventListener("click", () => {
-        this._handleDeleteCard();
+        this._handleDeleteClick();
       });
 
     this._cardImageElement.addEventListener("click", () => {
@@ -24,16 +33,16 @@ export default class Card {
     });
   }
 
-  _handleLikeIcon() {
+  toggleLike() {
     this._cardElement
       .querySelector(".card__like-button")
       .classList.toggle("card__like-button_active");
   }
 
-  _handleDeleteCard() {
-    this._cardElement.remove();
-    this._cardElement = null;
-  }
+  // _handleDeleteCard() {
+  //   this._cardElement.remove();
+  //   this._cardElement = null;
+  // }
   // _createCard(cardData) {
   //   const card = new Card(cardData, "#card-template", openPreviewModal);
   //   return card.getView();
