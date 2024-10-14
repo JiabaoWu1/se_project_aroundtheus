@@ -108,14 +108,14 @@ const addCardPopup = new PopupWithForm("#add-card-modal", (data) => {
       addCardFormElement.reset();
       addFormValidator.resetValidation();
       addCardPopup.close();
-      addCardPopup.setLoading("Save");
+      addCardPopup.setLoadingState("Save");
     })
     .catch((err) => {
       console.error(`Error, could not add card: ${err}`);
     })
     .finally(() => {
       // addCardFormElement.reset();
-      addCardPopup.setLoading("Save");
+      addCardPopup.setLoadingState("Save");
     });
 });
 addCardPopup.setEventListeners();
@@ -176,7 +176,7 @@ function handleCardPreview(cardData) {
 
 function handleAvatarEditSubmit(input) {
   const link = input.avatar;
-  editAvatarModal.setLoading("Saving...");
+  editAvatarModal.setLoadingState("Saving...");
   api
     .editProfileImage(link)
     .then((userData) => {
@@ -188,7 +188,7 @@ function handleAvatarEditSubmit(input) {
       console.log(err);
     })
     .finally(() => {
-      editAvatarModal.setLoading("Save");
+      editAvatarModal.setLoadingState("Save");
     });
 }
 
