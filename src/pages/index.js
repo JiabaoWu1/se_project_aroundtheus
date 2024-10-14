@@ -220,7 +220,7 @@ function handleDeleteClick(card) {
       .deleteCard(cardId)
       .then((res) => {
         console.log(res);
-        card._handelDeleteCard();
+        card._handleDeleteCard();
         confirmDeleteModal.close();
       })
       .catch((err) => {
