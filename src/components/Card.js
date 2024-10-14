@@ -6,6 +6,7 @@ export default class Card {
     handleLikeClick,
     handleDeleteClick
   ) {
+    this._id = data._id;
     this._name = data.name;
     this._link = data.link;
     this._data = data;
@@ -25,7 +26,7 @@ export default class Card {
     this._cardElement
       .querySelector(".card__delete-button")
       .addEventListener("click", () => {
-        this._handleDeleteClick();
+        this._handleDeleteClick(this);
       });
 
     this._cardImageElement.addEventListener("click", () => {
@@ -39,10 +40,10 @@ export default class Card {
       .classList.toggle("card__like-button_active");
   }
 
-  // _handleDeleteCard() {
-  //   this._cardElement.remove();
-  //   this._cardElement = null;
-  // }
+  _handleDeleteCard() {
+    this._cardElement.remove();
+    this._cardElement = null;
+  }
   // _createCard(cardData) {
   //   const card = new Card(cardData, "#card-template", openPreviewModal);
   //   return card.getView();

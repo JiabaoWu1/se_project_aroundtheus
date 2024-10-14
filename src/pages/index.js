@@ -217,7 +217,7 @@ function handleDeleteClick(card) {
   }
   confirmDeleteModal.setSubmitFunction(() => {
     api
-      .handleDeleteCard(cardId)
+      .deleteCard(cardId)
       .then((res) => {
         console.log(res);
         card.handleDeleteCard();
