@@ -61,12 +61,11 @@ export default class Card {
 
   _updateLikesView() {
     if (this._isLiked) {
-      this._likeButton.classList.add("card__button-like_active");
+      this._likeButton.classList.add("card__like-button_active");
     } else {
-      this._likeButton.classList.remove("card__button-like_active");
+      this._likeButton.classList.remove("card__like-button_active");
     }
   }
-
   getView() {
     this._cardElement = this._getTemplate();
 
