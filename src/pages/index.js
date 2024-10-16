@@ -174,22 +174,45 @@ function handleCardPreview(cardData) {
   previewImagePopup.open(cardData);
 }
 
+// function handleAvatarEditSubmit(input) {
+//   const link = input.avatar;
+//   editAvatarModal.setLoadingState("Saving...");
+//   api
+//     .editProfileImage(link)
+//     .then((userData) => {
+//       userInfo.setAvatarInfo(userData.avatar);
+
+//       editAvatarModal.close();
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     })
+//     .finally(() => {
+//       editAvatarModal.setLoadingState("Save");
+//     });
+// }
+
+const avatarSubmitButton = document.querySelector("#avatar-submit-button");
+
 function handleAvatarEditSubmit(input) {
   const link = input.avatar;
-  editAvatarModal.setLoadingState("Saving...");
-  api
-    .editProfileImage(link)
-    .then((userData) => {
-      userInfo.setAvatarInfo(userData.avatar);
-      // editAvatarModal.setLoading("Saving...");
-      editAvatarModal.close();
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-    .finally(() => {
-      editAvatarModal.setLoadingState("Save");
-    });
+
+  if (link) {
+    avatarSubmitButton.textContent = "Saving...";
+    api
+
+      .editProfileImage(link)
+      .then((userData) => {
+        userInfo.setUserInfo(userData);
+        editAvatarModal.close();
+      })
+      .catch((err) => console.error("Error updating avatar:", err))
+      .finally(() => {
+        editAvatarModal.setLoadingState("Save");
+      });
+  } else {
+    console.error("Avatar Link is not defined");
+  }
 }
 
 function handleProfileEditSubmit(formValues) {

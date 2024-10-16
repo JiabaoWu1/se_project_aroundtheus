@@ -59,6 +59,10 @@
   color: #000000;
 }
 
+.modal__heading-trash {
+  padding-top: 34px;
+}
+
 .modal__form-trashcan {
   margin: 0;
   padding: 0;
@@ -66,7 +70,6 @@
   width: 430px;
   height: 181px;
   background-color: #fff;
-  padding: 10px;
   border-radius: 10px;
 }
 
@@ -111,7 +114,7 @@
 }
 
 .modal__button-trash {
-  margin-bottom: 72px;
+  margin-top: 0px;
 }
 
 .modal__button:hover {
