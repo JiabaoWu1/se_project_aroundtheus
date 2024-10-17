@@ -98,7 +98,7 @@ const addCardPopup = new PopupWithForm("#add-card-modal", (data) => {
     link: data.url,
   };
 
-  addCardPopup.setLoadingState("Saving...");
+  addCardPopup.setLoadingState(true);
 
   api
     .createNewCard(cardData)
@@ -108,14 +108,14 @@ const addCardPopup = new PopupWithForm("#add-card-modal", (data) => {
       addCardFormElement.reset();
       addFormValidator.resetValidation();
       addCardPopup.close();
-      addCardPopup.setLoadingState("Save");
+      addCardPopup.setLoadingState(false);
     })
     .catch((err) => {
       console.error(`Error, could not add card: ${err}`);
     })
     .finally(() => {
       // addCardFormElement.reset();
-      addCardPopup.setLoadingState("Save");
+      addCardPopup.setLoadingState(false);
     });
 });
 addCardPopup.setEventListeners();
@@ -174,29 +174,11 @@ function handleCardPreview(cardData) {
   previewImagePopup.open(cardData);
 }
 
-// function handleAvatarEditSubmit(input) {
-//   const link = input.avatar;
-//   editAvatarModal.setLoadingState("Saving...");
-//   api
-//     .editProfileImage(link)
-//     .then((userData) => {
-//       userInfo.setAvatarInfo(userData.avatar);
-
-//       editAvatarModal.close();
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     })
-//     .finally(() => {
-//       editAvatarModal.setLoadingState("Save");
-//     });
-// }
-
 const avatarSubmitButton = document.querySelector("#avatar-submit-button");
 
 function handleAvatarEditSubmit(input) {
   const link = input.avatar;
-
+  api.updateAvatar(link);
   if (link) {
     avatarSubmitButton.textContent = "Saving...";
     api

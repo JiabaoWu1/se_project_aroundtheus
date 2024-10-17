@@ -30,6 +30,11 @@
   border-radius: 10px;
 }
 
+.modal__delete {
+  width: 430px;
+  height: 181px;
+}
+
 .modal__close {
   border: none;
   position: absolute;
@@ -60,6 +65,7 @@
 }
 
 .modal__heading-trash {
+  margin-top: 0;
   padding-top: 34px;
 }
 
@@ -168,6 +174,25 @@
   line-height: 21.78px;
   text-align: center;
   background: #ffffff;
+}
+
+.modal__avatar {
+  position: relative;
+}
+
+.profile__edit-avatar-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  background: url(../images/Avatar.svg) no-repeat center center;
+  background-size: contain;
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.66s;
 }
 
 @media screen and (max-width: 620px) {

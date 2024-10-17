@@ -18,7 +18,3 @@ export default class PopupWithConfirm extends Popup {
     });
   }
 }
-
-// PopupWithConfirm.addEvenetListener("click", () => {
-//   this._handleFormSubmit();
-// });

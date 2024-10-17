@@ -16,11 +16,15 @@
       </header>
       <main class="main">
         <section class="profile">
-          <img
-            src="<%=require('./images/Avatar.png')%>"
-            alt="Avatar"
-            class="profile__image"
-          />
+          <div class="profile__image-container">
+            <img alt="Link Invalid" class="profile__image" />
+            <!-- Edit icon/button for profile picture -->
+            <button
+              class="profile__edit-avatar-button"
+              id="edit-avatar-button"
+            ></button>
+          </div>
+
           <div class="profile__info">
             <h1 class="profile__title">Jaeques Cousteau</h1>
             <button
@@ -137,7 +141,7 @@
 
     <!-- ------------------------- delete popup modal -------------------------- -->
     <div class="modal" id="trashcan-modal">
-      <div class="modal__delete">
+      <div class="modal__container modal__delete">
         <button
           class="modal__close"
           type="button"
@@ -170,7 +174,7 @@
             type="url"
             name="avatar"
             placeholder="Provide Image URL please"
-            class="modal__input modal__input-type-url"
+            class="modal__input modal__form-input modal__input-type-url"
             id="avatar-url-input"
             required
           />
