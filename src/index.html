@@ -167,28 +167,30 @@
     <!-- ------------------------- profile edit modal -------------------------- -->
 
     <div class="modal" id="edit-avatar-modal">
-      <p class="modal__heading">Change Profile Picture</p>
-      <form action="" class="modal__form modal__avatar" id="edit-avatar-form">
-        <label class="modal__label">
-          <input
-            type="url"
-            name="avatar"
-            placeholder="Provide Image URL please"
-            class="modal__input modal__form-input modal__input-type-url"
-            id="avatar-url-input"
-            required
-          />
-          <span class="modal__error" id="avatar-url-input-error"></span>
-        </label>
-        <button
-          class="modal__button modal__button-disabled"
-          type="submit"
-          id="avatar-submit-button"
-          disabled
-        >
-          Save
-        </button>
-      </form>
+      <div class="modal__container">
+        <form action="" class="modal__form modal__avatar" id="edit-avatar-form">
+          <h2 class="modal__heading">Change Profile Picture</h2>
+          <label class="modal__label">
+            <input
+              type="url"
+              name="avatar"
+              placeholder="Provide Image URL please"
+              class="modal__input modal__form-input modal__input-type-url"
+              id="avatar-url-input"
+              required
+            />
+            <span class="modal__error" id="avatar-url-input-error"></span>
+          </label>
+          <button
+            class="modal__button modal__button-disabled"
+            type="submit"
+            id="avatar-submit-button"
+            disabled
+          >
+            Save
+          </button>
+        </form>
+      </div>
     </div>
 
     <!-- -------------------------- Card Template ---------------------------- -->
