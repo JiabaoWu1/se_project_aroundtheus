@@ -143,9 +143,11 @@ const imagePopup = new PopupWithImage("#preview-modal");
 imagePopup.setEventListeners();
 
 // add event listener to avatar
-document.querySelector(".modal__avatar").addEventListener("click", () => {
-  editAvatarModal.open();
-});
+document
+  .querySelector(".profile__edit-avatar-button")
+  .addEventListener("click", () => {
+    editAvatarModal.open();
+  });
 // when it fires, open avatar image modal
 
 /* ------------------------ Enable form validation ------------------------ */
