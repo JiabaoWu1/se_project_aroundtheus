@@ -134,6 +134,7 @@ cardAddButton.addEventListener("click", () => {
 
 profileEditButton.addEventListener("click", () => {
   const formValues = userInfo.getUserInfo();
+  // editProfileModal.setLoadingState(true);
   profileTitleInput.value = formValues.name;
   profileDescriptionInput.value = formValues.about;
   editProfileModal.open();
@@ -178,21 +179,46 @@ function handleCardPreview(cardData) {
 
 const avatarSubmitButton = document.querySelector("#avatar-submit-button");
 
+// function handleAvatarEditSubmit(input) {
+//   const link = input.avatar;
+//   api.updateAvatar(link);
+//   if (link) {
+//     avatarSubmitButton.textContent = "Saving...";
+//     api
+
+//       .editProfileImage(link)
+//       .then((userData) => {
+//         userInfo.setUserInfo(userData);
+//         editAvatarModal.close();
+//       })
+//       .catch((err) => console.error("Error updating avatar:", err))
+//       .finally(() => {
+//         editAvatarModal.setLoadingState(false);
+//       });
+//   } else {
+//     console.error("Avatar Link is not defined");
+//   }
+// }
+
 function handleAvatarEditSubmit(input) {
   const link = input.avatar;
-  api.updateAvatar(link);
-  if (link) {
-    avatarSubmitButton.textContent = "Saving...";
-    api
 
-      .editProfileImage(link)
+  if (link) {
+    // set loading state to true
+    editAvatarModal.setLoadingState(true);
+    // the right api call is updateAvatar
+    api
+      .updateAvatar(link)
       .then((userData) => {
-        userInfo.setUserInfo(userData);
+        // set avatar info
+        userInfo.setAvatarInfo(userData.avatar);
+
         editAvatarModal.close();
       })
       .catch((err) => console.error("Error updating avatar:", err))
       .finally(() => {
-        editAvatarModal.setLoadingState("Save");
+        // set loading state to false
+        editAvatarModal.setLoadingState(false);
       });
   } else {
     console.error("Avatar Link is not defined");
