@@ -228,7 +228,7 @@ function handleAvatarEditSubmit(input) {
 function handleProfileEditSubmit(formValues) {
   editProfileModal.setLoadingState(true);
   api
-    .updateProfileInfo(formValues.titile, formValues.card__description)
+    .updateProfileInfo(formValues.title, formValues.card__description)
     .then((userInfo) => {
       userInfo.setUserInfo({
         name: formValues.title,
