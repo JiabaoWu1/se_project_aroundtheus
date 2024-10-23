@@ -226,10 +226,24 @@ function handleAvatarEditSubmit(input) {
 }
 
 function handleProfileEditSubmit(formValues) {
-  userInfo.setUserInfo({
-    name: formValues.title,
-    about: formValues.card__description,
-  });
+  editProfileModal.setLoadingState(true);
+  api
+    .updateProfileInfo(formValues.titile, formValues.card__description)
+    .then((userInfo) => {
+      userInfo.setUserInfo({
+        name: formValues.title,
+        about: formValues.card__description,
+      });
+    })
+    .catch((err) => console.error("Error updating Profile Info", err))
+    .finally(() => {
+      editProfileModal.setLoadingState(false);
+    });
+
+  // userInfo.setUserInfo({
+  //   name: formValues.title,
+  //   about: formValues.card__description,
+  // });
   editProfileModal.close();
 }
 // function handleAddCardFormSubmit(formValues) {
