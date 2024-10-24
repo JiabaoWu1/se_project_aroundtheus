@@ -1,7 +1,8 @@
 export default class UserInfo {
-  constructor({ nameSelector, descriptionSelector }) {
+  constructor({ nameSelector, descriptionSelector, avatarSelector }) {
     this._nameElement = document.querySelector(nameSelector);
     this._aboutElement = document.querySelector(descriptionSelector);
+    this._avatarElement = document.querySelector(avatarSelector);
   }
 
   getUserInfo() {
@@ -14,5 +15,13 @@ export default class UserInfo {
   setUserInfo({ name, about }) {
     this._nameElement.textContent = name;
     this._aboutElement.textContent = about;
+  }
+
+  setAvatarInfo(avatar) {
+    if (this._avatarElement) {
+      this._avatarElement.src = avatar;
+    } else {
+      console.error("Avatar element not found");
+    }
   }
 }
