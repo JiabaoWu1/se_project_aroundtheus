@@ -108,7 +108,6 @@ const addCardPopup = new PopupWithForm("#add-card-modal", (data) => {
       addCardFormElement.reset();
       addFormValidator.resetValidation();
       addCardPopup.close();
-      addCardPopup.setLoadingState(false);
     })
     .catch((err) => {
       console.error(`Error, could not add card: ${err}`);
@@ -135,6 +134,7 @@ cardAddButton.addEventListener("click", () => {
 profileEditButton.addEventListener("click", () => {
   const formValues = userInfo.getUserInfo();
   // editProfileModal.setLoadingState(true);
+  profileEditValidator.resetValidation();
   profileTitleInput.value = formValues.name;
   profileDescriptionInput.value = formValues.about;
   editProfileModal.open();
@@ -164,7 +164,7 @@ const addFormValidator = new FormValidator(
 
 const editAvatarValidator = new FormValidator(
   validationSettings,
-  document.querySelector("#edit-avatar-modal")
+  document.querySelector(".modal__avatar")
 );
 
 editFormValidator.enableValidation();
@@ -267,7 +267,7 @@ function handleDeleteClick(card) {
       .deleteCard(cardId)
       .then((res) => {
         console.log(res);
-        card._handleDeleteCard();
+        card.handleDeleteCard();
         confirmDeleteModal.close();
       })
       .catch((err) => {
@@ -285,18 +285,16 @@ function createCard(cardData) {
     (data) => {
       if (!data.isLiked) {
         api
-          .likeCard(data._id, { method: "PUT" })
+          .likeCard(data._id)
           .then((res) => {
             console.log(res);
             data.isLiked = true;
             card.toggleLike();
           })
-          .catch((err) => {
-            console.error(err);
-          });
+          .catch(console.error);
       } else {
         api
-          .dislikeCard(data._id, { method: "DELETE" })
+          .dislikeCard(data._id)
           .then((res) => {
             console.log(res);
             data.isLiked = false;
