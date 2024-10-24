@@ -229,7 +229,7 @@ function handleProfileEditSubmit(formValues) {
   editProfileModal.setLoadingState(true);
   api
     .updateProfileInfo(formValues.title, formValues.card__description)
-    .then((userInfo) => {
+    .then(() => {
       userInfo.setUserInfo({
         name: formValues.title,
         about: formValues.card__description,
