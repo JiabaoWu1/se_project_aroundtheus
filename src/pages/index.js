@@ -234,6 +234,7 @@ function handleProfileEditSubmit(formValues) {
         name: formValues.title,
         about: formValues.card__description,
       });
+      editProfileModal.close();
     })
     .catch((err) => console.error("Error updating Profile Info", err))
     .finally(() => {
@@ -244,7 +245,6 @@ function handleProfileEditSubmit(formValues) {
   //   name: formValues.title,
   //   about: formValues.card__description,
   // });
-  editProfileModal.close();
 }
 // function handleAddCardFormSubmit(formValues) {
 //   const name = formValues.title;
@@ -326,3 +326,4 @@ api
   .catch((err) => {
     console.error("Failed to load user information:", err);
   });
+``;
