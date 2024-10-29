@@ -16,11 +16,15 @@
       </header>
       <main class="main">
         <section class="profile">
-          <img
-            src="<%=require('./images/Avatar.png')%>"
-            alt="Avatar"
-            class="profile__image"
-          />
+          <div class="profile__image-container">
+            <img alt="Link Invalid" class="profile__image" />
+            <!-- Edit icon/button for profile picture -->
+            <button
+              class="profile__edit-avatar-button"
+              id="edit-avatar-button"
+            ></button>
+          </div>
+
           <div class="profile__info">
             <h1 class="profile__title">Jaeques Cousteau</h1>
             <button
@@ -127,13 +131,74 @@
     </div>
 
     <!-- -------------------------- Open Card Modal ---------------------------- -->
-    <div class="modal" id="preview-modal">
+    <div class="modal modal__preview" id="preview-modal">
       <div class="modal__container">
         <button class="modal__close"></button>
         <img src="" alt="" class="modal__image" />
         <p class="modal__title"></p>
       </div>
     </div>
+
+    <!-- ------------------------- delete popup modal -------------------------- -->
+    <div class="modal" id="trashcan-modal">
+      <div class="modal__container modal__delete">
+        <button
+          class="modal__close"
+          type="button"
+          id="trashcan-delete"
+        ></button>
+
+        <form
+          class="modal__form modal__form-trashcan"
+          name="trashcan-form-submit"
+        >
+          <h2 class="modal__heading modal__heading-trash">Are you sure?</h2>
+          <button
+            class="modal__button modal__button-trash"
+            id="trashcan-delete-submit"
+            type="submit"
+          >
+            Yes
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- ------------------------- profile edit modal -------------------------- -->
+
+    <div class="modal" id="edit-avatar-modal">
+      <div class="modal__container modal__container-edit-avatar">
+        <button
+          class="modal__close"
+          type="button"
+          id="trashcan-delete"
+        ></button>
+
+        <form action="" class="modal__form modal__avatar" id="edit-avatar-form">
+          <h2 class="modal__heading">Change Profile Picture</h2>
+          <label class="modal__label">
+            <input
+              type="url"
+              name="avatar"
+              placeholder="Provide Image URL please"
+              class="modal__input modal__form-input modal__input-type-url"
+              id="avatar-url-input"
+              required
+            />
+            <span class="modal__error" id="avatar-url-input-error"></span>
+          </label>
+          <button
+            class="modal__button modal__button_disabled"
+            type="submit"
+            id="avatar-submit-button"
+            disabled
+          >
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
+
     <!-- -------------------------- Card Template ---------------------------- -->
     <template id="card-template">
       <li class="card">
