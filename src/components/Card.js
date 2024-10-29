@@ -34,10 +34,10 @@ export default class Card {
   }
 
   toggleLike() {
-    this.this._likeButton.classList.toggle("card__like-button_active");
+    this._likeButton.classList.toggle("card__like-button_active");
   }
 
-  _handleDeleteCard() {
+  handleDeleteCard() {
     this._cardElement.remove();
     this._cardElement = null;
   }

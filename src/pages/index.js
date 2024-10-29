@@ -134,7 +134,7 @@ cardAddButton.addEventListener("click", () => {
 profileEditButton.addEventListener("click", () => {
   const formValues = userInfo.getUserInfo();
   // editProfileModal.setLoadingState(true);
-  profileEditValidator.resetValidation();
+  editFormValidator.resetValidation();
   profileTitleInput.value = formValues.name;
   profileDescriptionInput.value = formValues.about;
   editProfileModal.open();
